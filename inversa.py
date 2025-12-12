@@ -302,7 +302,7 @@ class Inversa(Scene):
         resultados.next_to(values, RIGHT, buff=0.3)
 
         resultados_identity = Matrix([results_identity])
-        donante_identity = Matrix([donor_identity])
+        donante_identity = Matrix([donor_identity]).next_to(A, UP, buff=1)
         resultados_identity.next_to(values, RIGHT, buff=0.3)
 
         initial_position = donante.get_center()
@@ -360,6 +360,7 @@ class Inversa(Scene):
         # delete the work values
         self.play(FadeOut(VGroup(resultados, values, donante)))
 
+        initial_position = donante_identity.get_center()
         donante_identity.move_to(I.get_rows()[target])
         the_list_identity = [
             [text_to_fraction(elem.tex_string) for elem in row] for row in I.get_rows()
@@ -367,7 +368,6 @@ class Inversa(Scene):
         for i in range(3):
             the_list_identity[target][i] = results_identity[i]
         correct_I = Matrix(the_list_identity).move_to(I.get_center())
-
         self.play(donante_identity.animate.move_to(initial_position))
         self.play(Write(VGroup(values, resultados_identity)))
 
@@ -382,7 +382,7 @@ class Inversa(Scene):
 
             # create a copy
             fantasma = resultados_identity[0][i].copy()
-            fantasma.move_to(resultados_identity[0][i])  # empieza donde está arriba
+            fantasma.move_to(resultados_identity[0][i]) 
             self.add(fantasma)
 
             # animate the copy to the new postion
@@ -423,14 +423,14 @@ class Inversa(Scene):
         #TODO
         ...
     def construct(self):
- 
-        # def the initial matrix A and identity
-        A = Matrix(
-            [
+        
+        original =[
                 [1, 2, 3],
                 [4, 5, 7],
                 [8, 9, 12],
             ]
+        # def the initial matrix A and identity
+        A = Matrix(original
         )
         I = Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 1]]).move_to(RIGHT * 2)
 
@@ -471,3 +471,17 @@ class Inversa(Scene):
         A, I = self.scalar_timer(target=1, factor=Fraction(-1, 3), A=A, I=I)
 
         A, I = self.Adder_row(donor=1, recipient=0, factor=-2, A=A, I=I)
+        
+        A_postions = A.get_center()
+
+        the_original = Matrix(original).move_to(A_postions)
+        
+        self.play(Transform(A, the_original))
+        self.wait()
+         
+        inverse_label = label = MathTex("A^{-1}", "=").next_to(the_original, RIGHT, buff=0.5)
+        
+        reforcement = I.copy()
+        self.play(Transform(I, inverse_label))
+        reforcement.next_to(inverse_label, RIGHT,  buff=0.1)
+        self.play(Write(reforcement))
