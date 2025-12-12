@@ -1,0 +1,26 @@
+# Ignorar carpeta de outputs de Manim
+media/
+
+# Cachés de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de entorno virtual (por si usas)
+venv/
+.venv/
+env/
+.env/
+
+# Archivos temporales
+*.log
+*.tmp
+*.temp
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
