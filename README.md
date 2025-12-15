@@ -44,6 +44,8 @@ manim -pqh rotador.py PlanoCartesiano
 This renders the **PlanoCartesiano** scene from `rotador.py`.
 
 You can also watch the result on this youtube video [https://youtu.be/FmPjUM-k8BU](https://youtu.be/FmPjUM-k8BU)
+
+
 ---
 
 ## Notes
