@@ -29,7 +29,7 @@ manim -pqh inversa.py Inversa
 
 This command renders the **Inversa** scene defined in `inversa.py` using high quality settings.
 
-You can also see the result on this youtube video [https://youtu.be/qcmfL3yRyh4](https://youtu.be/qcmfL3yRyh4)
+You can also watch the result on this youtube video [https://youtu.be/qcmfL3yRyh4](https://youtu.be/qcmfL3yRyh4)
 
 ---
 
@@ -43,6 +43,7 @@ manim -pqh rotador.py PlanoCartesiano
 
 This renders the **PlanoCartesiano** scene from `rotador.py`.
 
+You can also watch the result on this youtube video [https://youtu.be/FmPjUM-k8BU](https://youtu.be/FmPjUM-k8BU)
 ---
 
 ## Notes
