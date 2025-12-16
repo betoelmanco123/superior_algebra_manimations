@@ -6,6 +6,11 @@ You can install Manim by following the official documentation:
 [https://www.manim.community](https://www.manim.community)
 
 ---
+## Contexto académico
+
+Support material for the courses of:
+- Álgebra Lineal
+- Álgebra Superior
 
 ![Rotación en el plano complejo](trailer.gif)
 ## Requirements
@@ -17,6 +22,10 @@ You can install Manim by following the official documentation:
 Make sure Manim is correctly installed and available in your terminal before proceeding.
 
 ---
+## Structure
+
+- rotador.py → Rotation on the complex plane
+- inversa.py → Calculation of the inverse matrix
 
 ## Rendering the Matrix Inverse Animation
 

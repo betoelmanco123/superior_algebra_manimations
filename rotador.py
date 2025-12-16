@@ -142,14 +142,19 @@ class PlanoCartesiano(MovingCameraScene):
             y_length=20,
             axis_config={"color": WHITE, "include_numbers": False},
         )
+        rotador_position = (1 / sp.sqrt(2), 1 / sp.sqrt(2))
         grid = NumberPlane(y_range=[-12, 12, 1])
         grid.set_opacity(0.8)
         grid.set_z_index(0)
         yellow_dot = Dot(grid.c2p(1, 1), color=YELLOW).set_z_index(1)
         green_dot = Dot(grid.c2p(3, 1), color=YELLOW).set_z_index(1)
         orange_dot = Dot(grid.c2p(2, 4), color=YELLOW).set_z_index(1)
-        R_dot = Dot(grid.c2p(0.707106, 0.707106), color=AZUL_ELECTRICO).set_z_index(1)
-        degrees = MathTex("45^\circ", font_size=36)
+        R_dot = Dot(
+            grid.c2p(float(rotador_position[0]), float(rotador_position[1])),
+            color=AZUL_ELECTRICO,
+        ).set_z_index(1)
+        angle = sp.deg(sp.atan2(rotador_position[1], rotador_position[0]))
+        degrees = MathTex(f"{sp.latex(angle)}^\circ", font_size=36)
 
         # Animaciones
         self.play(FadeIn(yellow_dot, run_time=1))
@@ -170,15 +175,9 @@ class PlanoCartesiano(MovingCameraScene):
         self.wait()
         self.play(FadeIn(R_dot, run_time=2))
         self.wait()
-        a_value, x = self.multiply_imaginary(
-            (1, 1), (1 / sp.sqrt(2), 1 / sp.sqrt(2)), grid=grid
-        )
-        b_value, y = self.multiply_imaginary(
-            (3, 1), (1 / sp.sqrt(2), 1 / sp.sqrt(2)), grid=grid
-        )
-        c_value, z = self.multiply_imaginary(
-            (2, 4), (1 / sp.sqrt(2), 1 / sp.sqrt(2)), grid=grid
-        )
+        a_value, x = self.multiply_imaginary((1, 1), rotador_position, grid=grid)
+        b_value, y = self.multiply_imaginary((3, 1), rotador_position, grid=grid)
+        c_value, z = self.multiply_imaginary((2, 4), rotador_position, grid=grid)
         last = Polygon(x, y, z, color=MORADO_ELECTRICO)
         self.play(Create(last))
         self.wait()
