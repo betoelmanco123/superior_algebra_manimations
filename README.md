@@ -7,6 +7,7 @@ You can install Manim by following the official documentation:
 
 ---
 
+![Rotación en el plano complejo](trailer.gif)
 ## Requirements
 
 * Python 3.9+
